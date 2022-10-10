@@ -7,12 +7,12 @@ const BooksForm = () =>{
 
     const [book, setBook] = useState({
     // id: "", 
-        title: "",
-        author: "",
-        yearOfPublication: "",
-        srcImage: "",
-        description: "",
-        isbn: ""
+        title: "Whitout Title",
+        author: "Unknown",
+        yearOfPublication: "Unknown",
+        srcImage: "https://i.postimg.cc/SNDkWj8c/Sin-t-tulodd-1.png",
+        description: "Without Description",
+        isbn: "Unknown"
     });
     
     const dispatch = useDispatch()
