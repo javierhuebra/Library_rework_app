@@ -18,7 +18,9 @@ const BookDetail = () =>{
             
             <img src={bookDetailed[0].srcImage} alt="Book Image BIG"/>
             <p>Title: {bookDetailed[0].title}</p>
-            <p>Author: {bookDetailed[0].author}</p>
+            <p>Author: {bookDetailed[0].author.map(aut=>{
+                return(aut+", ")
+            })}</p>
             <p>Year: {bookDetailed[0].yearOfPublication}</p>
             <p>Description: {bookDetailed[0].description}</p>
             <p>ISBN: {bookDetailed[0].isbn}</p> 

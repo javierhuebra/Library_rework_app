@@ -8,7 +8,7 @@ const BooksForm = () =>{
 
     const [book, setBook] = useState({
         title: "Nothing Typed",
-        author: "Nothing Typed",
+        author: ["Nothing Typed"],
         yearOfPublication: "Nothing Typed",
         srcImage: "https://us.123rf.com/450wm/nikiteev/nikiteev1712/nikiteev171200048/91247923-vector-de-dibujos-animados-amarillo-doodle-signo-de-interrogaci%C3%B3n-sobre-fondo-blanco-aislado.jpg?ver=6",
         description: "Nothing Typed",
@@ -19,9 +19,13 @@ const BooksForm = () =>{
 
     const handleChange = (e) =>{
         //console.log(e.target.name, e.target.value)
+        let value = e.target.value;
+        if (e.target.name === "author") {
+        value = value.split(",");
+    }
         setBook({
             ...book,
-            [e.target.name]: e.target.value,
+            [e.target.name]: value,
             
         })
 
@@ -47,7 +51,8 @@ const BooksForm = () =>{
             name="title" 
             type="text" 
             placeholder="Write"
-            onChange={handleChange}/>
+            onChange={handleChange}
+            />
 
             <br/> 
 
@@ -93,6 +98,7 @@ const BooksForm = () =>{
             name="isbn" 
             type="text" 
             placeholder="Optional"
+            
             onChange={handleChange}/>
 
             <br/>
