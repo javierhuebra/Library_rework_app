@@ -25,7 +25,8 @@ const BookDetail = () =>{
             <p>Description: {bookDetailed[0].description}</p>
             <p>ISBN: {bookDetailed[0].isbn}</p> 
             <p>id: {id}</p>
-            <Link to={`/book-detail/${id}/edit`}><button>Edit Information</button> </Link>
+            <Link to={'/'}><button>Back</button></Link>
+            <Link to={`/book-detail/${id}/edit`}><button>Edit Information</button></Link>
             
             
             

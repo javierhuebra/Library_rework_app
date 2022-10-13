@@ -1,21 +1,25 @@
-import { useState } from "react";
-import { useDispatch } from 'react-redux';
-import { addBook } from '../features/books/booksSlice';
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { addBook, updateBook } from '../features/books/booksSlice';
 import { v4 as uuidv4 } from 'uuid';
+import { useNavigate, useParams } from "react-router-dom";
 
 //SACARLE LOS <BR> SE LOS PUSE PARA VERLO LINDO NOMAS
-const BooksForm = () =>{
+const BooksForm = ({ btonName }) =>{
+
+    const dispatch = useDispatch();
+    const params = useParams();
+    const books = useSelector(state => state.books);
+    const navigate = useNavigate();
 
     const [book, setBook] = useState({
-        title: "Nothing Typed",
-        author: ["Nothing Typed"],
-        yearOfPublication: "Nothing Typed",
+        title: "Sacar esto",
+        author: ["Fulano"],
+        yearOfPublication: "",
         srcImage: "https://us.123rf.com/450wm/nikiteev/nikiteev1712/nikiteev171200048/91247923-vector-de-dibujos-animados-amarillo-doodle-signo-de-interrogaci%C3%B3n-sobre-fondo-blanco-aislado.jpg?ver=6",
-        description: "Nothing Typed",
-        isbn: "Nothing Typed"
+        description: "",
+        isbn: ""
     });
-    
-    const dispatch = useDispatch()
 
     const handleChange = (e) =>{
         //console.log(e.target.name, e.target.value)
@@ -35,13 +39,32 @@ const BooksForm = () =>{
         e.preventDefault();
         //console.log(book);
         
-        dispatch(      //el spread operator permite anexarle el id dentro del mismo arreglo, si le saco los ... me devuelve un objeto con los datos por un lado y el id por el otro.
+        
+        
+            if(params.id){
+                dispatch(updateBook(book))
+                navigate(`/book-detail/${params.id}`);
+            }else{
+                dispatch(      //el spread operator permite anexarle el id dentro del mismo arreglo, si le saco los ... me devuelve un objeto con los datos por un lado y el id por el otro.
             addBook({
                 ...book,
                 id:uuidv4(),
                 
             }));
+
+            navigate(`/`);
+            }
+        
     }
+
+    
+
+    useEffect(()=>{
+        console.log("Hay params?:",params.id)
+        if(params.id){
+            setBook(books.find((book) => book.id === params.id));
+        }
+    }, [])
 
     return(
         <form onSubmit={handleSubmit}>
@@ -52,16 +75,20 @@ const BooksForm = () =>{
             type="text" 
             placeholder="Write"
             onChange={handleChange}
+            value={book.title}
+            autoComplete='off'
             />
 
             <br/> 
 
-            <label>Author: </label>
+            <label>Author/s: </label>
             <input 
             name="author"
             type="text" 
             placeholder="Write"
-            onChange={handleChange}/>
+            onChange={handleChange}
+            value={book.author}
+            autoComplete='off'/>
             
             <br/> 
 
@@ -70,7 +97,9 @@ const BooksForm = () =>{
             name="yearOfPublication" 
             type="text" 
             placeholder="1995"
-            onChange={handleChange}/>
+            onChange={handleChange}
+            value={book.yearOfPublication}
+            autoComplete='off'/>
 
             <br/>
             
@@ -80,7 +109,9 @@ const BooksForm = () =>{
             name="srcImage" 
             type="text" 
             placeholder="https://www.yourimage.com/image.png"
-            onChange={handleChange}/>
+            onChange={handleChange}
+            value={book.srcImage}
+            autoComplete='off'/>
 
             <br/>
 
@@ -89,7 +120,9 @@ const BooksForm = () =>{
             name="description" 
             type="text" 
             placeholder="Description..."
-            onChange={handleChange}/>
+            onChange={handleChange}
+            value={book.description}
+            autoComplete='off'/>
 
             <br/> 
 
@@ -98,12 +131,13 @@ const BooksForm = () =>{
             name="isbn" 
             type="text" 
             placeholder="Optional"
-            
-            onChange={handleChange}/>
+            onChange={handleChange}
+            value={book.isbn}
+            autoComplete='off'/>
 
             <br/>
 
-            <button>Save</button>
+            <button>{btonName}</button>
 
         </form>
     )

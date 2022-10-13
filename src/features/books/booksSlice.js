@@ -47,10 +47,26 @@ export const booksSlice = createSlice({//reducers es el que va a contener multip
             //console.log(state, action)
             state.push(action.payload);
         },
+        updateBook: (state, action) =>{
+            const { id, title, author, yearOfPublication, srcImage, description, isbn } = action.payload;
+
+            const foundBook = state.find(book => book.id === id);
+
+            if(foundBook){
+                foundBook.title = title;
+                foundBook.author = author;
+                foundBook.yearOfPublication = yearOfPublication;
+                foundBook.srcImage = srcImage;
+                foundBook.description = description;
+                foundBook.isbn = isbn;
+            }
+            
+        },
         deleteBook: (state, action) => {
             return state.filter((book) => book.id !== action.payload);
-          },
+        },
+        
     }
 })
-export const { addBook,deleteBook } = booksSlice.actions;
+export const { addBook, deleteBook, updateBook } = booksSlice.actions;
 export default booksSlice.reducer;
