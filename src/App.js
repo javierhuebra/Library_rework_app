@@ -14,7 +14,8 @@ function App() {
     <div className="App">
       <Header/>
       <Routes>
-        <Route path='/' element={<div className='home'> <BooksForm btonName={'Add Book'}/> <BooksList/></div>}/>
+        <Route path='/' element={<BooksList/>}/>
+        <Route path='/add-book' element={<BooksForm btonName={'Add Book'}/>}/>
         <Route path='/book-detail/:id' element={<BookDetail/>}/>
         <Route path='/book-detail/:id/edit' element={<div className='div-experimental'><ModalEdit/></div>}/>
 

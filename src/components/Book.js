@@ -15,8 +15,15 @@ const handleDelete = (id) => {
         <h2>{title}</h2>
         <h3>{firstAuthor}</h3>
         <img src={srcImage} alt="Book image"/>
-        <Link to={`/book-detail/${bookId}`}><button>Detail</button></Link>
-        <button onClick={() => handleDelete(bookId)}>Delete</button> 
+        <div className='buttons'>
+            <Link to={`/book-detail/${bookId}`}><button className='btn-detail'>Detail</button></Link>
+            <div className='delete-logo' onClick={() => handleDelete(bookId)}>
+                <p className='delete-text'>Delete</p>
+                <p className='x-text'>+</p>
+            </div> 
+        </div>
+        
+           
     </div>//recordar que para que funcione la funcion por props se pone "() => deleteBook(id)"
     ) 
 }

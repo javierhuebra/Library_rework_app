@@ -67,7 +67,7 @@ const BooksForm = ({ btonName }) =>{
     }, [])
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='form-styled'>
             
             <label>Title: </label>
             <input

@@ -24,7 +24,7 @@ const BookDetail = () =>{
             <p>Year: {bookDetailed[0].yearOfPublication}</p>
             <p>Description: {bookDetailed[0].description}</p>
             <p>ISBN: {bookDetailed[0].isbn}</p> 
-            <p>id: {id}</p>
+            {/* <p>id: {id}</p> */}
             <Link to={'/'}><button>Back</button></Link>
             <Link to={`/book-detail/${id}/edit`}><button>Edit Information</button></Link>
             
