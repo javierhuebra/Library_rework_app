@@ -6,10 +6,10 @@ const BookDetail = () =>{
     const { id } = useParams();
     const books = useSelector(state => state.books);
     
-    console.log("Accediendo a la store desde Detail: ",books);
+    //console.log("Accediendo a la store desde Detail: ",books);
     
     let bookDetailed = books.filter(book => book.id === id);
-    console.log(bookDetailed[0])
+    //console.log("bookDetailed:",bookDetailed)
 
     return(
         <div className="book-detail">
