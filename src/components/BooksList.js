@@ -1,26 +1,42 @@
 import { useSelector } from 'react-redux'; //el useSelector basicamente tiene acceso a toda la aplicacion, el useSelector es la forma en que podemos traer los datos del estado (seleccionar o traer desde el estado)
 import  Book  from './Book';
-import { Link } from 'react-router-dom';
-
-//NO USAR INDEX EN MAP, USAR UUID
+import BooksForm from './BooksForm';
+import { ToastContainer } from 'react-toastify';
+import { useState } from 'react';
+import { BsPersonCircle } from "react-icons/bs";
 
 const BooksList = () =>{
     
 
     const books = useSelector (state => state.books);
 
-    console.log("BooksList: ", books);
+    const [stateModal, setStateModal] = useState(false);
+
+    //console.log("BooksList: ", books);
+
+    //ESTO ES PARA DESACTIVAR EL SCROLL SI SE ABRE EL MODAL (MODAL CASERITO, HAND MADE, PARA PRACTICAR JE)
+    if(stateModal){
+         document.body.style.overflow = 'hidden'; 
+    }else{
+        document.body.style.overflow = 'unset'; 
+    }
     
 
     return(
         <div className='book-list-container'>
-            <Link to='/add-book'>
-                <div className='btn-add-book'>
-                    <p className='add-book-plus'>+</p>
-                    <p className='add-book-text'>Add Book</p>
-                </div>
-            </Link>
-            <h1>BooksList</h1>
+            <ToastContainer autoClose={2000} theme="colored"/>
+            {stateModal && <BooksForm 
+                btonName={'Add Book'} 
+                setStateModal={setStateModal}
+            />}
+
+            
+            <div onClick={ () => setStateModal(true) } className='btn-add-book'>
+                <p className='add-book-plus'>+</p>
+                <p className='add-book-text'>Add Book</p>
+            </div>
+            
+            <h1 className='view-account'><BsPersonCircle/> Administrator View</h1>
             {
                 books.map((book,index) =>{
                     return(

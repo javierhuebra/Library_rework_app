@@ -1,10 +1,15 @@
 import { Link, useParams } from "react-router-dom"
 import { useSelector } from 'react-redux'; //el useSelector basicamente tiene acceso a toda la aplicacion, el useSelector es la forma en que podemos traer los datos del estado (seleccionar o traer desde el estado)
-
+import { useState } from "react";
+import { ToastContainer } from "react-toastify";
+import BooksForm from "./BooksForm";
+import { FaArrowLeft } from "react-icons/fa";
 const BookDetail = () =>{
     
     const { id } = useParams();
     const books = useSelector(state => state.books);
+
+    const [stateModal, setStateModal] = useState(false);
     
     //console.log("Accediendo a la store desde Detail: ",books);
     
@@ -13,20 +18,30 @@ const BookDetail = () =>{
 
     return(
         <div className="book-detail">
-            <h3>Book Detail</h3>
+            {stateModal && <BooksForm 
+                btonName={'Update'} 
+                setStateModal={setStateModal}
+            />}
+            <ToastContainer autoClose={2000} theme="colored"/>
+            
             
             
             <img src={bookDetailed[0].srcImage} alt="Book Image BIG"/>
-            <p>Title: {bookDetailed[0].title}</p>
-            <p>Author: {bookDetailed[0].author.map(aut=>{
+            <div className="info-detail-container">    
+                <p><span className="detail-key">Title:</span> {bookDetailed[0].title}</p>
+                <p><span className="detail-key">Author:</span> {bookDetailed[0].author.map(aut=>{
                 return(aut+", ")
-            })}</p>
-            <p>Year: {bookDetailed[0].yearOfPublication}</p>
-            <p>Description: {bookDetailed[0].description}</p>
-            <p>ISBN: {bookDetailed[0].isbn}</p> 
-            {/* <p>id: {id}</p> */}
-            <Link to={'/'}><button>Back</button></Link>
-            <Link to={`/book-detail/${id}/edit`}><button>Edit Information</button></Link>
+                })}</p>
+                <p><span className="detail-key">Year:</span> {bookDetailed[0].yearOfPublication}</p>
+                <p><span className="detail-key">Description:</span> {bookDetailed[0].description}</p>
+                <p><span className="detail-key">ISBN:</span> {bookDetailed[0].isbn}</p> 
+                {/* <p>id: {id}</p> */}
+            </div>
+            <div className="buttons-detail">
+                <Link to={'/'}><button className="back-btn"><FaArrowLeft/> Back</button></Link>
+                <button className="edit-info-btn" onClick={() => setStateModal(true)}>Edit Information</button>
+            </div>
+            
             
             
             
@@ -35,3 +50,4 @@ const BookDetail = () =>{
 }
 
 export default BookDetail;
+

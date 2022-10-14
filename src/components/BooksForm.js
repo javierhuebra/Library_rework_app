@@ -2,15 +2,17 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { addBook, updateBook } from '../features/books/booksSlice';
 import { v4 as uuidv4 } from 'uuid';
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 //SACARLE LOS <BR> SE LOS PUSE PARA VERLO LINDO NOMAS
-const BooksForm = ({ btonName }) =>{
+const BooksForm = ({ btonName,setStateModal }) =>{
 
     const dispatch = useDispatch();
     const params = useParams();
     const books = useSelector(state => state.books);
-    const navigate = useNavigate();
+    
 
     const [book, setBook] = useState({
         title: "Sacar esto",
@@ -32,6 +34,7 @@ const BooksForm = ({ btonName }) =>{
             [e.target.name]: value,
             
         })
+        
 
     }
 
@@ -43,18 +46,21 @@ const BooksForm = ({ btonName }) =>{
         
             if(params.id){
                 dispatch(updateBook(book))
-                navigate(`/book-detail/${params.id}`);
+                toast.success("Book detail edited Succesfuly!");
+                
             }else{
                 dispatch(      //el spread operator permite anexarle el id dentro del mismo arreglo, si le saco los ... me devuelve un objeto con los datos por un lado y el id por el otro.
             addBook({
                 ...book,
                 id:uuidv4(),
                 
+                
             }));
-
-            navigate(`/`);
+            toast.success("Book added Succesfuly!");
+            
             }
-        
+            setStateModal(false);
+            
     }
 
     
@@ -67,6 +73,8 @@ const BooksForm = ({ btonName }) =>{
     }, [])
 
     return(
+    <div className='modal-edicion'>
+        
         <form onSubmit={handleSubmit} className='form-styled'>
             
             <label>Title: </label>
@@ -140,6 +148,8 @@ const BooksForm = ({ btonName }) =>{
             <button>{btonName}</button>
 
         </form>
+        <button onClick={() => setStateModal(false)}>Cancel</button>
+    </div>
     )
 }
 
