@@ -33,7 +33,9 @@ const BookDetail = () =>{
                 return(aut+", ")
                 })}</p>
                 <p><span className="detail-key">Year:</span> {bookDetailed[0].yearOfPublication}</p>
-                <p><span className="detail-key">Description:</span> {bookDetailed[0].description}</p>
+                <div className="description-box">
+                    <p><span className="detail-key">Description:</span> {bookDetailed[0].description}</p>
+                </div>
                 <p><span className="detail-key">ISBN:</span> {bookDetailed[0].isbn}</p> 
                 {/* <p>id: {id}</p> */}
             </div>

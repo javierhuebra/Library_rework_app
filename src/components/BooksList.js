@@ -5,21 +5,12 @@ import { ToastContainer } from 'react-toastify';
 import { useState } from 'react';
 import { BsPersonCircle } from "react-icons/bs";
 
-const BooksList = () =>{
+const BooksList = ({stateModal, setStateModal}) =>{
     
 
     const books = useSelector (state => state.books);
 
-    const [stateModal, setStateModal] = useState(false);
-
-    //console.log("BooksList: ", books);
-
-    //ESTO ES PARA DESACTIVAR EL SCROLL SI SE ABRE EL MODAL (MODAL CASERITO, HAND MADE, PARA PRACTICAR JE)
-    if(stateModal){
-         document.body.style.overflow = 'hidden'; 
-    }else{
-        document.body.style.overflow = 'unset'; 
-    }
+    
     
 
     return(
@@ -31,10 +22,7 @@ const BooksList = () =>{
             />}
 
             
-            <div onClick={ () => setStateModal(true) } className='btn-add-book'>
-                <p className='add-book-plus'>+</p>
-                <p className='add-book-text'>Add Book</p>
-            </div>
+            
             
             <h1 className='view-account'><BsPersonCircle/> Administrator View</h1>
             {

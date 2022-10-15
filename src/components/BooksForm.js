@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 //SACARLE LOS <BR> SE LOS PUSE PARA VERLO LINDO NOMAS
-const BooksForm = ({ btonName,setStateModal }) =>{
+const BookshtmlForm = ({ btonName,setStateModal }) =>{
 
     const dispatch = useDispatch();
     const params = useParams();
@@ -46,7 +46,7 @@ const BooksForm = ({ btonName,setStateModal }) =>{
         
             if(params.id){
                 dispatch(updateBook(book))
-                toast.success("Book detail edited Succesfuly!");
+                toast.success("Book detail edited Successfully!");
                 
             }else{
                 dispatch(      //el spread operator permite anexarle el id dentro del mismo arreglo, si le saco los ... me devuelve un objeto con los datos por un lado y el id por el otro.
@@ -56,7 +56,7 @@ const BooksForm = ({ btonName,setStateModal }) =>{
                 
                 
             }));
-            toast.success("Book added Succesfuly!");
+            toast.success("Book added Successfully!");
             
             }
             setStateModal(false);
@@ -74,83 +74,115 @@ const BooksForm = ({ btonName,setStateModal }) =>{
 
     return(
     <div className='modal-edicion'>
-        
-        <form onSubmit={handleSubmit} className='form-styled'>
-            
-            <label>Title: </label>
+        <div className="formbold-main-wrapper">
+      <div className="formbold-form-wrapper">
+        <h2 className="formbold-h2">{btonName}</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="htmlFormbold-mb-5">
+            <label htmlFor="name" className="htmlFormbold-htmlForm-label">
+              Title*
+            </label>
             <input
-            name="title" 
-            type="text" 
-            placeholder="Write"
-            onChange={handleChange}
-            value={book.title}
-            autoComplete='off'
+              name="title"
+              type="text"
+              placeholder="Book title"
+              onChange={handleChange}
+              value={book.title}
+              htmlFor="off"
+              className="htmlFormbold-htmlForm-input"
+              required
             />
-
-            <br/> 
-
-            <label>Author/s: </label>
-            <input 
-            name="author"
-            type="text" 
-            placeholder="Write"
-            onChange={handleChange}
-            value={book.author}
-            autoComplete='off'/>
-            
-            <br/> 
-
-            <label>Edition Year: </label>
+          </div>
+          <div className="htmlFormbold-mb-5">
+            <label htmlFor="author" className="htmlFormbold-htmlForm-label">
+              Author/s*
+            </label>
             <input
-            name="yearOfPublication" 
-            type="text" 
-            placeholder="1995"
-            onChange={handleChange}
-            value={book.yearOfPublication}
-            autoComplete='off'/>
-
-            <br/>
-            
-
-            <label>Source Image: </label>
+              name="author"
+              type="text"
+              placeholder="Author 1, Author 2, Author 3"
+              onChange={handleChange}
+              value={book.author}
+              htmlFor="off"
+              className="htmlFormbold-htmlForm-input"
+              required
+            />
+          </div>
+          <div className="htmlFormbold-mb-5">
+            <label htmlFor="yearOfPublication" className="htmlFormbold-htmlForm-label">
+              Edition year*
+            </label>
             <input
-            name="srcImage" 
-            type="text" 
-            placeholder="https://www.yourimage.com/image.png"
-            onChange={handleChange}
-            value={book.srcImage}
-            autoComplete='off'/>
-
-            <br/>
-
-            <label>Description: </label>
+              name="yearOfPublication"
+              type="text"
+              placeholder="1995"
+              onChange={handleChange}
+              value={book.yearOfPublication}
+              htmlFor="off"
+              className="htmlFormbold-htmlForm-input"
+              pattern="^[12][0-9]{3}$"
+              required
+            />
+          </div>
+          <div className="htmlFormbold-mb-5">
+            <label htmlFor="yearOfPublication" className="htmlFormbold-htmlForm-label">
+              Cover image*
+            </label>
+            <input
+              name="srcImage"
+              type="text"
+              placeholder="https://www.yourimage.com/image.png"
+              onChange={handleChange}
+              value={book.srcImage}
+              htmlFor="off"
+              className="htmlFormbold-htmlForm-input"
+              required
+            />
+          </div>
+          <div className="htmlFormbold-mb-5">
+            <label htmlFor="yearOfPublication" className="htmlFormbold-htmlForm-label">
+              ISBN
+            </label>
+            <input
+              name="isbn"
+              type="text"
+              placeholder="3457269405679"
+              onChange={handleChange}
+              value={book.isbn}
+              htmlFor="off"
+              className="htmlFormbold-htmlForm-input"
+              pattern="(ISBN[-]*(1[03])*[ ]*(: ){0,1})*(([0-9Xx][- ]*){13}|([0-9Xx][- ]*){10})"
+            />
+          </div>
+          <div className="htmlFormbold-mb-5">
+            <label htmlFor="description" className="htmlFormbold-htmlForm-label">
+              Book description*
+            </label>
             <textarea
-            name="description" 
-            type="text" 
-            placeholder="Description..."
-            onChange={handleChange}
-            value={book.description}
-            autoComplete='off'/>
-
-            <br/> 
-
-            <label>ISBN: </label>
-            <input
-            name="isbn" 
-            type="text" 
-            placeholder="Optional"
-            onChange={handleChange}
-            value={book.isbn}
-            autoComplete='off'/>
-
-            <br/>
-
-            <button>{btonName}</button>
-
+              rows="6"
+              name="description"
+              id="description"
+              placeholder="Type the book's description"
+              onChange={handleChange}
+              value={book.description}
+              htmlFor="off"
+              className="htmlFormbold-htmlForm-input"
+              required
+            ></textarea>
+          </div>
+          <div className="htmlFormbold-mb-5">
+            <p>(*) Mandatory fields</p>
+          </div>
+          <div>
+            <button className="htmlFormbold-btn">{btonName}</button>
+          </div>
         </form>
         <button onClick={() => setStateModal(false)}>Cancel</button>
+        </div>
+    </div>
+        
     </div>
     )
 }
 
-export default BooksForm;
+export default BookshtmlForm;

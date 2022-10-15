@@ -15,14 +15,16 @@
     #ffc14e 20px,
     #ffc14e 40px
 ); */
-  
+  background-color: #f8f8f8;
+  min-height: 100vh;
 }
 
 /* ESTILOS HEADER */
 .nav-bar{
   width: 100vw;
   height: 10vh;
-  background-color: #164aa7;
+  background: rgb(22,74,167);
+background: linear-gradient(0deg, rgba(22,74,167,1) 0%, rgba(3,14,89,1) 100%);
 
   display: flex;
   justify-content: space-between;
@@ -30,6 +32,7 @@
 
   position: fixed;
   z-index: 120;
+  box-shadow: 5px 5px 10px  rgba(0, 0, 0, 0.349);
 }
 .menu{
   background-color: #021d4b;
@@ -48,26 +51,78 @@
   font-size: 45px;
 }
 
-.logo{
-  background-color: blueviolet;
 
-  width: 15vh;
-  height: 8vh;
-
-  margin-left: 7px;
-
-  border-radius: 10px;
-}
 .menucito{
-  background-color: violet;
+ background-color: #164aa7;
   width: 200px;
-  height: 250px;
-
+  min-height: 165px;
+  border-radius: 0 0 0 10px;
   position: absolute;
   top: 10vh;
   right: 0;
 
   animation: aparecer 0.1s ease-in;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: 5px 5px 10px  rgba(0, 0, 0, 0.349);
+  
+}
+.hider-menucito{
+  height: 10vh;
+  width: 200px;
+  background: rgb(22,74,167);
+background: linear-gradient(0deg, rgba(22,74,167,1) 0%, rgba(3,14,89,1) 100%);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  z-index: 15555;
+}
+.btns-menucito,.btn-add-book{
+  
+  background-color: #021d4b;
+  color: white;
+  border: none;
+  height: 40px;
+  width: 95%;
+  border-bottom: 5px solid #164aa7;
+  border-radius: 10px;
+}
+.logo{
+  background-color: #021d4b00;
+
+  width: 130px;
+  height: 8vh;
+
+  margin-left: 7px;
+
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  color: white;
+}
+.logo img{
+  width: 55px;
+  margin-left: 3px;
+}
+.logo p{
+  width: 65px;
+  line-height:90%;
+}
+.btn-add-book{
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
+  
 }
 /* ---------------------- */
 
@@ -108,7 +163,12 @@
 
 /* ESTILOS BOOK LIST */
 .view-account{
+  margin-top: 11vh;
+  margin-bottom: 10px;
   color: green;
+  background-color: rgba(0, 128, 0, 0.253);
+  display: flex;
+  justify-content: center;
 }
 .book-list-container{
   padding-top:20px ;
@@ -118,48 +178,7 @@
   text-decoration: none;
   
 }
-.btn-add-book{
-  width: 80px;
-  height: 80px;
-  background-color: #164aa7;
-  color: white;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  border-radius: 50%;
-
-  position: relative;
-
-  
-}
-
-.add-book-text{
-  background-color:#164aa7;
-  position: absolute;
-  left: 90%;
-  width: 85px;
-  height: 40px;
-  border-radius: 0px 50px 50px 0px;
-
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-
-  padding-right: 10px;
-  padding-bottom: 2px;
-}
-.add-book-plus{
-  font-size: 50px;
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 10px;
-
-  
-}
 /* ---------------------- */
 
 /* ESTILOS BOOK */
@@ -178,41 +197,9 @@
   height: 274px;
   
 }
-.delete-logo{
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: white;
-  border: 2px solid red;
-  color: red;
-  font-size: 30px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
-  padding-bottom: 5px;
-  padding-left: 5px;
-  
-  
-  position: absolute;
-  bottom: 89%;
-  left: 83%;
-  
-}
-.delete-text{
-  
-  position: absolute;
-  font-size: 15px;
-  left: 120%;
-  bottom: 3px;
-}
-
-.x-text{
-  transform: rotate(45deg);
-}
-
-.btn-detail{
+.btn-detail,.btn-delete{
   background-color: #164aa7;
   color: white;
   border: none;
@@ -222,11 +209,17 @@
   font-size: 15px;
   
 }
+.btn-delete{
+  background-color: red;
+  width: 60px;
+  
+}
 .buttons{
   
   width: 180px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  
   margin: 5px 0;
 }
 /* ---------------------- */
@@ -241,6 +234,7 @@
 }
 .book-detail img{
   width: 300px;
+  height: 420px;
   margin-top: 13vh;
 }
 .book-detail p{
@@ -254,6 +248,13 @@
   text-align: left;
   width: 300px;
   word-wrap: break-word;
+  margin: 8px 0;
+}
+.description-box{
+  background-color: #0177b21f;
+  max-height: 80px;
+  overflow-y: scroll;
+  
 }
 
 .buttons-detail{
@@ -274,13 +275,145 @@
   width: 120px;
 }
 /* ---------------------- */
+/* ESTILOS DE SCROLL */
+.description-box::-webkit-scrollbar {
+  width: 7px;               /* width of the entire scrollbar */
+}
 
+.description-box::-webkit-scrollbar-track {
+  background: rgb(205, 198, 248);        /* color of the tracking area */
+}
 
+.description-box::-webkit-scrollbar-thumb {
+  background-color: #164aa7;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+    /* creates padding around scroll thumb */
+}
+/* ---------------------- */
 @keyframes aparecer {
  0%{
   opacity: 0;
  }
   100% {
     opacity: 1;
+  }
+}
+
+/* ESTILOS FORM */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f1f3f3;
+}
+
+.formbold-h2 {
+  margin-bottom: 40px;
+  color: #004466;
+  font-size: 30px;
+}
+
+.formbold-mb-5 {
+  margin-bottom: 20px;
+}
+.formbold-pt-3 {
+  padding-top: 12px;
+}
+.formbold-main-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+}
+
+.formbold-form-wrapper {
+  margin: 0 auto;
+  max-width: 550px;
+  width: 100%;
+  background: #f1f3f3;
+}
+.formbold-form-label {
+  display: block;
+  font-weight: 500;
+  font-size: 16px;
+  color: #07074d;
+  margin-bottom: 12px;
+}
+.formbold-form-label-2 {
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.formbold-form-input {
+  width: 100%;
+  padding: 12px 24px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  font-weight: 500;
+  font-size: 16px;
+  color: #6b7280;
+  outline: none;
+  resize: none;
+}
+.formbold-form-input:focus {
+  border-color: #0177b2;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.formbold-btn {
+  text-align: center;
+  font-size: 16px;
+  border-radius: 6px;
+  padding: 14px 32px;
+  border: none;
+  font-weight: 600;
+  background-color: #0177b2;
+  color: white;
+  cursor: pointer;
+}
+
+.formbold-btn-cancel {
+  text-align: center;
+  font-size: 16px;
+  border-radius: 6px;
+  padding: 14px 32px;
+  border: solid #0177b2 1px;
+  font-weight: 600;
+  background-color: white;
+  color: #0177b2;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.formbold-btn:hover {
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.formbold--mx-3 {
+  margin-left: -12px;
+  margin-right: -12px;
+}
+.formbold-px-3 {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.flex {
+  display: flex;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.w-full {
+  width: 100%;
+}
+@media (min-width: 540px) {
+  .sm\:w-half {
+    width: 50%;
   }
 }
