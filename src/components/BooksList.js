@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import { useState } from 'react';
 import { BsPersonCircle } from "react-icons/bs";
 
-const BooksList = ({stateModal, setStateModal}) =>{
+const BooksList = ({stateModal, setStateModal, stateLogin}) =>{
     
 
     const books = useSelector (state => state.books);
@@ -24,22 +24,24 @@ const BooksList = ({stateModal, setStateModal}) =>{
             
             
             
-            <h1 className='view-account'><BsPersonCircle/> Administrator View</h1>
-            {
-                books.map((book,index) =>{
-                    return(
-                        <Book
-                        key={index}
-                        title={book.title}
-                        firstAuthor={book.author[0]}
-                        srcImage={book.srcImage}
-                        bookId={book.id}
-                        
-                    />
-                    )
+            {stateLogin &&<h1 className='view-account'><BsPersonCircle/> { stateLogin && 'Administrator View'}</h1>}
+            <div className='books-list'>
+                {
+                    books.map((book,index) =>{
+                        return(
+                            <Book
+                            key={index}
+                            title={book.title}
+                            firstAuthor={book.author[0]}
+                            srcImage={book.srcImage}
+                            bookId={book.id}
+                            stateLogin={stateLogin}
+                        />
+                        )
                     
-                })
-            }
+                    })
+                }
+            </div>
         </div>
     )
 }

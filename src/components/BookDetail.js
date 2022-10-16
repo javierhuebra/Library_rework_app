@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import BooksForm from "./BooksForm";
 import { FaArrowLeft } from "react-icons/fa";
-const BookDetail = () =>{
+const BookDetail = ({stateLogin}) =>{
     
     const { id } = useParams();
     const books = useSelector(state => state.books);
@@ -27,6 +27,7 @@ const BookDetail = () =>{
             
             
             <img src={bookDetailed[0].srcImage} alt="Book Image BIG"/>
+            <div className="container-details">
             <div className="info-detail-container">    
                 <p><span className="detail-key">Title:</span> {bookDetailed[0].title}</p>
                 <p><span className="detail-key">Author:</span> {bookDetailed[0].author.map(aut=>{
@@ -41,9 +42,9 @@ const BookDetail = () =>{
             </div>
             <div className="buttons-detail">
                 <Link to={'/'}><button className="back-btn"><FaArrowLeft/> Back</button></Link>
-                <button className="edit-info-btn" onClick={() => setStateModal(true)}>Edit Information</button>
+                {stateLogin &&<button className="edit-info-btn" onClick={() => setStateModal(true)}>Edit Information</button>}
             </div>
-            
+            </div>
             
             
             
