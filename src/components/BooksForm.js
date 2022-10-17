@@ -73,115 +73,114 @@ const BookshtmlForm = ({ btonName,setStateModal }) =>{
     }, [])
 
     return(
-    <div className='modal-edicion'>
-        <div className="formbold-main-wrapper">
-      <div className="formbold-form-wrapper">
-        <h2 className="formbold-h2">{btonName}</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="htmlFormbold-mb-5">
-            <label htmlFor="name" className="htmlFormbold-htmlForm-label">
-              Title*
-            </label>
-            <input
-              name="title"
-              type="text"
-              placeholder="Book title"
-              onChange={handleChange}
-              value={book.title}
-              htmlFor="off"
-              className="htmlFormbold-htmlForm-input"
-              required
-            />
-          </div>
-          <div className="htmlFormbold-mb-5">
-            <label htmlFor="author" className="htmlFormbold-htmlForm-label">
-              Author/s*
-            </label>
-            <input
-              name="author"
-              type="text"
-              placeholder="Author 1, Author 2, Author 3"
-              onChange={handleChange}
-              value={book.author}
-              htmlFor="off"
-              className="htmlFormbold-htmlForm-input"
-              required
-            />
-          </div>
-          <div className="htmlFormbold-mb-5">
-            <label htmlFor="yearOfPublication" className="htmlFormbold-htmlForm-label">
-              Edition year*
-            </label>
-            <input
-              name="yearOfPublication"
-              type="text"
-              placeholder="1995"
-              onChange={handleChange}
-              value={book.yearOfPublication}
-              htmlFor="off"
-              className="htmlFormbold-htmlForm-input"
-              pattern="^[12][0-9]{3}$"
-              required
-            />
-          </div>
-          <div className="htmlFormbold-mb-5">
-            <label htmlFor="yearOfPublication" className="htmlFormbold-htmlForm-label">
-              Cover image*
-            </label>
-            <input
-              name="srcImage"
-              type="text"
-              placeholder="https://www.yourimage.com/image.png"
-              onChange={handleChange}
-              value={book.srcImage}
-              htmlFor="off"
-              className="htmlFormbold-htmlForm-input"
-              required
-            />
-          </div>
-          <div className="htmlFormbold-mb-5">
-            <label htmlFor="yearOfPublication" className="htmlFormbold-htmlForm-label">
-              ISBN
-            </label>
-            <input
-              name="isbn"
-              type="text"
-              placeholder="3457269405679"
-              onChange={handleChange}
-              value={book.isbn}
-              htmlFor="off"
-              className="htmlFormbold-htmlForm-input"
-              pattern="(ISBN[-]*(1[03])*[ ]*(: ){0,1})*(([0-9Xx][- ]*){13}|([0-9Xx][- ]*){10})"
-            />
-          </div>
-          <div className="htmlFormbold-mb-5">
-            <label htmlFor="description" className="htmlFormbold-htmlForm-label">
-              Book description*
-            </label>
-            <textarea
-              rows="6"
-              name="description"
-              id="description"
-              placeholder="Type the book's description"
-              onChange={handleChange}
-              value={book.description}
-              htmlFor="off"
-              className="htmlFormbold-htmlForm-input"
-              required
-            ></textarea>
-          </div>
-          <div className="htmlFormbold-mb-5">
-            <p>(*) Mandatory fields</p>
-          </div>
-          <div>
-            <button className="htmlFormbold-btn">{btonName}</button>
-          </div>
-        </form>
-        <button onClick={() => setStateModal(false)}>Cancel</button>
+      <div className="modal-edicion">
+      <div className="prueba-clase-form">
+          <h2 className="formbold-h2">{btonName}</h2>
+          <form onSubmit={handleSubmit} className='form-class'>
+            <div className="formbold-mb-5">
+              <label htmlFor="name" className="formbold-form-label">
+                Title*
+              </label>
+              <input
+                name="title"
+                type="text"
+                placeholder="Book title"
+                onChange={handleChange}
+                value={book.title}
+                htmlFor="off"
+                className="formbold-form-input"
+                required
+              />
+            </div>
+            <div className="formbold-mb-5">
+              <label htmlFor="author" className="formbold-form-label">
+                Author/s*
+              </label>
+              <input
+                name="author"
+                type="text"
+                placeholder="Author 1, Author 2, Author 3"
+                onChange={handleChange}
+                value={book.author}
+                htmlFor="off"
+                className="formbold-form-input"
+                required
+              />
+            </div>
+            <div className="formbold-mb-5">
+              <label htmlFor="yearOfPublication" className="formbold-form-label">
+                Edition year*
+              </label>
+              <input
+                name="yearOfPublication"
+                type="text"
+                placeholder="1995"
+                onChange={handleChange}
+                value={book.yearOfPublication}
+                htmlFor="off"
+                className="formbold-form-input"
+                pattern="^[12][0-9]{3}$"
+                required
+              />
+            </div>
+            <div className="formbold-mb-5">
+              <label htmlFor="yearOfPublication" className="formbold-form-label">
+                Cover image*
+              </label>
+              <input
+                name="srcImage"
+                type="text"
+                placeholder="https://www.yourimage.com/image.png"
+                onChange={handleChange}
+                value={book.srcImage}
+                htmlFor="off"
+                className="formbold-form-input"
+                required
+              />
+            </div>
+            <div className="formbold-mb-5">
+              <label htmlFor="yearOfPublication" className="formbold-form-label">
+                ISBN
+              </label>
+              <input
+                name="isbn"
+                type="text"
+                placeholder="3457269405679"
+                onChange={handleChange}
+                value={book.isbn}
+                htmlFor="off"
+                className="formbold-form-input"
+                pattern="(ISBN[-]*(1[03])*[ ]*(: ){0,1})*(([0-9Xx][- ]*){13}|([0-9Xx][- ]*){10})"
+              />
+            </div>
+            <div className="formbold-mb-5">
+              <label htmlFor="description" className="formbold-form-label">
+                Book description*
+              </label>
+              <textarea
+                rows="6"
+                name="description"
+                id="description"
+                placeholder="Type the book's description"
+                onChange={handleChange}
+                value={book.description}
+                htmlFor="off"
+                className="formbold-form-input"
+                required
+              ></textarea>
+            </div>
+            <div className="formbold-mb-5">
+              <p>(*) Mandatory fields</p>
+            </div>
+            <div>
+              <button className="formbold-btn">{btonName}</button>
+              <button onClick={() => setStateModal(false)}>Cancel</button>
+            </div>
+          </form>
+          
         </div>
-    </div>
-        
-    </div>
+      </div>
+    
     )
 }
 
