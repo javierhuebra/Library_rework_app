@@ -9,6 +9,7 @@ import { Route, Routes } from 'react-router-dom';
 function App() {
   const [stateModal, setStateModal] = useState(false);
   const [stateLogin, setStateLogin] = useState(true);
+  const [statePreview, setStatePreview] = useState(false);
 
   //console.log("BooksList: ", books);
 
@@ -25,13 +26,16 @@ function App() {
       <Header 
         setStateModal={setStateModal}
         stateLogin={stateLogin}
-        setStateLogin={setStateLogin}/>
+        setStateLogin={setStateLogin}
+        statePreview={statePreview}
+        setStatePreview={setStatePreview}/>
       <Routes>
         <Route path='/' 
           element={<BooksList stateModal={stateModal}
           setStateModal={setStateModal}
-          stateLogin={stateLogin}/>}/>
-        <Route path='/book-detail/:id' element={<BookDetail stateLogin={stateLogin}/>}/>
+          stateLogin={stateLogin}
+          statePreview={statePreview}/>}/>
+        <Route path='/book-detail/:id' element={<BookDetail stateLogin={stateLogin} statePreview={statePreview}/>}/>
         <Route path='*' element={<div><h2>ERROR 404: Not Found</h2></div>}/>
       </Routes>
       

@@ -4,7 +4,8 @@ import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import BooksForm from "./BooksForm";
 import { FaArrowLeft } from "react-icons/fa";
-const BookDetail = ({stateLogin}) =>{
+import { RiSettings5Fill, RiUser3Line } from "react-icons/ri";
+const BookDetail = ({stateLogin, statePreview}) =>{
     
     const { id } = useParams();
     const books = useSelector(state => state.books);
@@ -17,6 +18,8 @@ const BookDetail = ({stateLogin}) =>{
     //console.log("bookDetailed:",bookDetailed)
 
     return(
+        
+        
         <div className="book-detail">
             {stateModal && <BooksForm 
                 btonName={'Update'} 
@@ -24,8 +27,8 @@ const BookDetail = ({stateLogin}) =>{
             />}
             <ToastContainer autoClose={2000} theme="colored"/>
             
-            
-            
+            {stateLogin &&<h1 className={`view-account ${ (stateLogin && statePreview) ? 'title-client': ''}`}>{ (stateLogin && statePreview) ? <RiUser3Line/>: <RiSettings5Fill/>} { (stateLogin && statePreview) ? 'Client View':'Administrator View' }</h1>}
+            <div className="container-details-ult">
             <img src={bookDetailed[0].srcImage} alt="Book Image BIG"/>
             <div className="container-details">
             <div className="info-detail-container">    
@@ -42,12 +45,10 @@ const BookDetail = ({stateLogin}) =>{
             </div>
             <div className="buttons-detail">
                 <Link to={'/'}><button className="back-btn"><FaArrowLeft/> Back</button></Link>
-                {stateLogin &&<button className="edit-info-btn" onClick={() => setStateModal(true)}>Edit Information</button>}
+                {(stateLogin&&!statePreview) &&<button className="edit-info-btn" onClick={() => setStateModal(true)}>Edit Information</button>}
             </div>
+            </div> 
             </div>
-            
-            
-            
         </div>
     )
 }

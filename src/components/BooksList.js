@@ -3,9 +3,9 @@ import  Book  from './Book';
 import BooksForm from './BooksForm';
 import { ToastContainer } from 'react-toastify';
 import { useState } from 'react';
-import { BsPersonCircle } from "react-icons/bs";
+import { RiSettings5Fill, RiUser3Line } from "react-icons/ri";
 
-const BooksList = ({stateModal, setStateModal, stateLogin}) =>{
+const BooksList = ({stateModal, setStateModal, stateLogin, statePreview}) =>{
     
 
     const books = useSelector (state => state.books);
@@ -24,7 +24,7 @@ const BooksList = ({stateModal, setStateModal, stateLogin}) =>{
             
             
             
-            {stateLogin &&<h1 className='view-account'><BsPersonCircle/> { stateLogin && 'Administrator View'}</h1>}
+            {stateLogin &&<h1 className={`view-account ${ (stateLogin && statePreview) ? 'title-client': ''}`}>{ (stateLogin && statePreview) ? <RiUser3Line/>: <RiSettings5Fill/>} { (stateLogin && statePreview) ? 'Client View':'Administrator View' }</h1>}
             <div className='books-list'>
                 {
                     books.map((book,index) =>{
@@ -36,6 +36,7 @@ const BooksList = ({stateModal, setStateModal, stateLogin}) =>{
                             srcImage={book.srcImage}
                             bookId={book.id}
                             stateLogin={stateLogin}
+                            statePreview={statePreview}
                         />
                         )
                     

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import MenuBurger from "./MenuBurger";
 import imageLogo from '../assets/images/librin-logo.png';
 
-const Header = ({setStateModal, stateLogin, setStateLogin})  =>{
+const Header = ({setStateModal, stateLogin, setStateLogin, statePreview, setStatePreview})  =>{
     const [stateMenucito, setStateMenucito] = useState(false);
     const navigate = useNavigate();
     
@@ -16,10 +16,12 @@ const Header = ({setStateModal, stateLogin, setStateLogin})  =>{
                 setStateMenucito={setStateMenucito}
                 stateLogin={stateLogin}
                 setStateLogin={setStateLogin}
+                statePreview={statePreview}
+                setStatePreview={setStatePreview}
             />}
             <div onClick={()=>navigate("/")}className="logo">
                 <img src={imageLogo}/>
-                <div className="logo-text"><p>Le Biblio<span className="tec">tec</span></p></div>
+                <div className="logo-text"><p>Le Biblio<span className="tec">tec®</span></p></div>
             </div>
             <div className="hider-menucito">
                 <div onClick={() => setStateMenucito(!stateMenucito)} className="menu"><BsList/></div>

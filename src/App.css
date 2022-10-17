@@ -80,7 +80,7 @@ background: linear-gradient(0deg, rgba(22,74,167,1) 0%, rgba(3,14,89,1) 100%);
   justify-content: flex-end;
   align-items: center;
 
-  z-index: 15555;
+  z-index: 15;
 }
 .btns-menucito,.btn-add-book{
   
@@ -109,6 +109,9 @@ background: linear-gradient(0deg, rgba(22,74,167,1) 0%, rgba(3,14,89,1) 100%);
   color: white;
   user-select: none;
   cursor: pointer;
+  z-index: 25;
+  
+  
 }
 .logo img{
   width: 8vh;
@@ -119,6 +122,7 @@ background: linear-gradient(0deg, rgba(22,74,167,1) 0%, rgba(3,14,89,1) 100%);
   width: 65px;
   line-height:90%;
   font-size: 20px;
+  
 }
 .tec{
   font-weight: bold;
@@ -131,6 +135,38 @@ background: linear-gradient(0deg, rgba(22,74,167,1) 0%, rgba(3,14,89,1) 100%);
   align-items: center;
   background-color: green;
   
+}
+.login-inputs{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 190px;
+}
+.login-inputs label{
+  color: white;
+}
+.login-inputs input{
+  width: 100%;
+}
+.btn-login{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 190px;
+  
+}
+.btn-login button{
+  width: 80px;
+  height: 30px;
+  border: none;
+  margin: 5px 0;
+}
+.cli-view{
+  background-color: #1795ac;
+}
+.adm-view{
+  background-color: rgb(74, 141, 74);
 }
 /* ---------------------- */
 
@@ -180,6 +216,10 @@ background: linear-gradient(0deg, rgba(22,74,167,1) 0%, rgba(3,14,89,1) 100%);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.title-client{
+  background-color: #0688c94b;
+  color: #0177b2;
 }
 .book-list-container{
   padding-top:13vh;
@@ -246,12 +286,13 @@ background: linear-gradient(0deg, rgba(22,74,167,1) 0%, rgba(3,14,89,1) 100%);
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 12vh;
   
 }
 .book-detail img{
   width: 300px;
   height: 420px;
-  margin-top: 13vh;
+  
 }
 .book-detail p{
   font-weight:bold;
@@ -289,7 +330,9 @@ background: linear-gradient(0deg, rgba(22,74,167,1) 0%, rgba(3,14,89,1) 100%);
 }
 .edit-info-btn{
   width: 120px;
+  background-color: rgb(161, 159, 0);
 }
+
 /* ---------------------- */
 /* ESTILOS DE SCROLL */
 .description-box::-webkit-scrollbar {
@@ -371,14 +414,38 @@ background: linear-gradient(0deg, rgba(22,74,167,1) 0%, rgba(3,14,89,1) 100%);
   }
 
   .book-detail{
-    flex-direction: row;
-    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
+    padding-top: 0px;
   }
 
   .container-detail{
     display: flex;
     flex-direction: column;
+  }
+
+  .menucito{
+    flex-direction: row;
+    width: 900px;
+  }
+  .btns-menucito,.btn-add-book{
+    border: none;
+    height: 40px;
+    width: 150px;
+    margin: 0 7px 7px 7px;
+   
+  }
+
+  .login-inputs{
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+  }
+  .login-inputs input{
+    margin: 0 5px;
   }
 }
 
