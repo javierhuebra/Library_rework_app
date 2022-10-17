@@ -79,7 +79,7 @@ const BookshtmlForm = ({ btonName,setStateModal }) =>{
           <form onSubmit={handleSubmit} className='form-class'>
             <div className="formbold-mb-5">
               <label htmlFor="name" className="formbold-form-label">
-                Title*
+                Title<span className="rojito">*</span>
               </label>
               <input
                 name="title"
@@ -87,14 +87,14 @@ const BookshtmlForm = ({ btonName,setStateModal }) =>{
                 placeholder="Book title"
                 onChange={handleChange}
                 value={book.title}
-                htmlFor="off"
+                autoComplete="off"
                 className="formbold-form-input"
                 required
               />
             </div>
             <div className="formbold-mb-5">
               <label htmlFor="author" className="formbold-form-label">
-                Author/s*
+                Author/s<span className="rojito">*</span>
               </label>
               <input
                 name="author"
@@ -102,22 +102,22 @@ const BookshtmlForm = ({ btonName,setStateModal }) =>{
                 placeholder="Author 1, Author 2, Author 3"
                 onChange={handleChange}
                 value={book.author}
-                htmlFor="off"
+                autoComplete="off"
                 className="formbold-form-input"
                 required
               />
             </div>
             <div className="formbold-mb-5">
               <label htmlFor="yearOfPublication" className="formbold-form-label">
-                Edition year*
+                Edition year<span className="rojito">*</span>
               </label>
               <input
                 name="yearOfPublication"
-                type="text"
+                type="number"
                 placeholder="1995"
                 onChange={handleChange}
                 value={book.yearOfPublication}
-                htmlFor="off"
+                autoComplete="off"
                 className="formbold-form-input"
                 pattern="^[12][0-9]{3}$"
                 required
@@ -125,7 +125,7 @@ const BookshtmlForm = ({ btonName,setStateModal }) =>{
             </div>
             <div className="formbold-mb-5">
               <label htmlFor="yearOfPublication" className="formbold-form-label">
-                Cover image*
+                Cover image<span className="rojito">*</span>
               </label>
               <input
                 name="srcImage"
@@ -133,7 +133,7 @@ const BookshtmlForm = ({ btonName,setStateModal }) =>{
                 placeholder="https://www.yourimage.com/image.png"
                 onChange={handleChange}
                 value={book.srcImage}
-                htmlFor="off"
+                autoComplete="on"
                 className="formbold-form-input"
                 required
               />
@@ -148,14 +148,12 @@ const BookshtmlForm = ({ btonName,setStateModal }) =>{
                 placeholder="3457269405679"
                 onChange={handleChange}
                 value={book.isbn}
-                htmlFor="off"
                 className="formbold-form-input"
-                pattern="(ISBN[-]*(1[03])*[ ]*(: ){0,1})*(([0-9Xx][- ]*){13}|([0-9Xx][- ]*){10})"
               />
             </div>
             <div className="formbold-mb-5">
               <label htmlFor="description" className="formbold-form-label">
-                Book description*
+                Book description<span className="rojito">*</span>
               </label>
               <textarea
                 rows="6"
@@ -164,17 +162,16 @@ const BookshtmlForm = ({ btonName,setStateModal }) =>{
                 placeholder="Type the book's description"
                 onChange={handleChange}
                 value={book.description}
-                htmlFor="off"
-                className="formbold-form-input"
+                className="formbold-form-input description-text"
                 required
               ></textarea>
             </div>
             <div className="formbold-mb-5">
-              <p>(*) Mandatory fields</p>
+              <p>(<span className="rojito">*</span>) Mandatory fields</p>
             </div>
-            <div>
-              <button className="formbold-btn">{btonName}</button>
-              <button onClick={() => setStateModal(false)}>Cancel</button>
+            <div className="btns-form">
+              <button className={`formbold-btn ${params.id && 'update-btn'}`}>{btonName}</button>
+              <button className="formbold-btn cancel-form"onClick={() => setStateModal(false)}>Cancel</button>
             </div>
           </form>
           

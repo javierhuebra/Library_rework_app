@@ -21,7 +21,7 @@ const Header = ({setStateModal, stateLogin, setStateLogin, statePreview, setStat
             />}
             <div onClick={()=>navigate("/")}className="logo">
                 <img src={imageLogo}/>
-                <div className="logo-text"><p>Le Biblio<span className="tec">tec®</span></p></div>
+                <div className="logo-text"><p>Le Biblio<span className="tec">te<span className="cr">c<span className="r">®</span></span></span></p></div>
             </div>
             <div className="hider-menucito">
                 <div onClick={() => setStateMenucito(!stateMenucito)} className="menu"><BsList/></div>
